@@ -1,5 +1,6 @@
 package com.example.PEDIDOSAPP.servicios;
 
+import com.example.PEDIDOSAPP.modelos.Producto;
 import com.example.PEDIDOSAPP.modelos.Usuario;
 import com.example.PEDIDOSAPP.repositorios.IProductoRepositorio;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,7 +34,7 @@ public class ProductoServicio {
     }
 
     //Buscar por ID
-    public Producto buscarServicioPorId (Integer idServicio)throws Exception{
+    public Producto buscarProductoPorId (Integer idServicio)throws Exception{
         try {
             Optional<Producto> usuarioBuscado=this.repositorio.findById(idProducto);
             if (servicioBuscado.isPresent()){

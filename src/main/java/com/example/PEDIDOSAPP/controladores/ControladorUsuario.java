@@ -4,6 +4,7 @@ import com.example.PEDIDOSAPP.modelos.Usuario;
 import com.example.PEDIDOSAPP.servicios.UsuarioServicio;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.RequestEntity;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -15,11 +16,11 @@ public class ControladorUsuario {
     UsuarioServicio usuarioServicio;
     //Guardar
     @PostMapping
-    public ResponseEntity <?> guardar (@RequestBody Usuario datosPeticion){
+    public ResponseEntity <?> guardar (@RequestBody Usuario datos){
         try {
             return ResponseEntity
                     .status(HttpStatus.CREATED)
-                    .body(this.usuarioServicio.guardarUsuario(datosPeticion));
+                    .body(this.usuarioServicio.guardarUsuario(datos));
 
         }catch (Exception error){
             return ResponseEntity
@@ -30,11 +31,11 @@ public class ControladorUsuario {
 
     //Buscar todos
     @GetMapping
-    public ResponseEntity <?> buscarTodo (@RequestBody Usuario datosPeticion){
+    public ResponseEntity <?> buscarTodos (){
         try {
             return ResponseEntity
-                    .status(HttpStatus.CREATED)
-                    .body(this.usuarioServicio.buscarTodosUsuarios(datosPeticion));
+                    .status(HttpStatus.OK)
+                    .body(this.usuarioServicio.buscarTodosUsuarios());
 
         }catch (Exception error){
             return ResponseEntity
@@ -44,13 +45,46 @@ public class ControladorUsuario {
     }
 
     //Buscar Id
-    @GetMapping
+    @GetMapping("/{id}")
+    public ResponseEntity <?> buscarId (@PathVariable Integer id){
+        try {
+            return ResponseEntity
+                    .status(HttpStatus.OK)
+                    .body(this.usuarioServicio.buscarUsuarioPorId(id));
+        }catch (Exception error){
+            return ResponseEntity
+                    .status(HttpStatus.BAD_REQUEST)
+                    .body(error.getMessage());
+        }
+    }
 
     //Modificar
-    @PutMapping
+    @PutMapping("/{id}")
+    public ResponseEntity <?> modificar (@PathVariable Integer id ,@RequestBody Usuario datos){
+        try {
+            return ResponseEntity
+                    .status(HttpStatus.OK)
+                    .body(this.usuarioServicio.modificarUsuario(id, datos));
+        }catch (Exception error){
+            return ResponseEntity
+                    .status(HttpStatus.BAD_REQUEST)
+                    .body(error.getMessage());
+        }
+    }
 
     //Eliminar
-    @DeleteMapping
+    @DeleteMapping("/{id}")
+    public  ResponseEntity <?> eliminar (@PathVariable Integer id) {
+        try {
+            return ResponseEntity
+                    .status(HttpStatus.OK)
+                    .body(this.usuarioServicio.eliminarUsuario(id));
 
+        } catch (Exception error) {
+            return ResponseEntity
+                    .status(HttpStatus.BAD_REQUEST)
+                    .body(error.getMessage());
+        }
+    }
 
 }
