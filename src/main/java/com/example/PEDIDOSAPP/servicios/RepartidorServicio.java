@@ -34,7 +34,7 @@ public class RepartidorServicio {
             if (repartidorBuscado.isPresent()){
                 return repartidorBuscado.get();
             }else {
-                throw new Exception("La tienda consulta no se encuentra en la BD");
+                throw new Exception("La repartidor consulta no se encuentra en la BD");
             }
         } catch (Exception error) {
             throw new RuntimeException(error.getMessage());

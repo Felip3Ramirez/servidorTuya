@@ -1,7 +1,6 @@
 package com.example.PEDIDOSAPP.servicios;
 
 import com.example.PEDIDOSAPP.modelos.Producto;
-import com.example.PEDIDOSAPP.modelos.Usuario;
 import com.example.PEDIDOSAPP.repositorios.IProductoRepositorio;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -25,7 +24,7 @@ public class ProductoServicio {
         }
     }
     //Buscar todos los registros
-    public List<Producto> buscarTodosUServicio()throws Exception{
+    public List<Producto> buscarTodosProducto()throws Exception{
         try {
             return this.repositorio.findAll();
         }catch (Exception error){
@@ -34,13 +33,13 @@ public class ProductoServicio {
     }
 
     //Buscar por ID
-    public Producto buscarProductoPorId (Integer idServicio)throws Exception{
+    public Producto buscarProductoPorId (Integer idProducto)throws Exception{
         try {
-            Optional<Producto> usuarioBuscado=this.repositorio.findById(idProducto);
-            if (servicioBuscado.isPresent()){
-                return servicioBuscado.get();
+            Optional<Producto> productoBuscado=this.repositorio.findById(idProducto);
+            if (productoBuscado.isPresent()){
+                return productoBuscado.get();
             }else {
-                throw new Exception("el usuario consultado no esta en la BD");
+                throw new Exception("el producto consultado no esta en la BD");
             }
         }catch (Exception error){
             throw new Exception(error.getMessage());
@@ -48,15 +47,15 @@ public class ProductoServicio {
     }
 
     //Modificar por ID
-    public Usuario modificarUsuario (Integer idUsuario,Usuario datosUsuario) throws Exception{
+    public Producto modificarProducto (Integer idProducto,Producto datosProducto) throws Exception{
         try {
-            Optional<Usuario> usuarioBuscado=this.repositorio.findById(idUsuario);
-            if (usuarioBuscado.isPresent()){
-                usuarioBuscado.get().setTelefono(datosUsuario.getTelefono());
-                usuarioBuscado.get().setCorreoElectronico(datosUsuario.getCorreoElectronico());
-                return this.repositorio.save(usuarioBuscado.get());
+            Optional<Producto> productoBuscado=this.repositorio.findById(idProducto);
+            if (productoBuscado.isPresent()){
+                productoBuscado.get().setNombre(datosProducto.getNombre());
+                productoBuscado.get().setPrecio(datosProducto.getPrecio());
+                return this.repositorio.save(productoBuscado.get());
             }else{
-                throw new Exception("Usuario no encontrado");
+                throw new Exception("Producto no encontrado");
             }
 
         }catch (Exception error){
@@ -65,14 +64,14 @@ public class ProductoServicio {
     }
 
     //Eliminar por ID
-    public boolean eliminarUsuario(Integer id)throws Exception{
+    public boolean eliminarProducto(Integer id)throws Exception{
         try {
-            Optional<Usuario> usuarioBuscado=this.repositorio.findById(id);
-            if (usuarioBuscado.isPresent()){
+            Optional<Producto> productoBuscado=this.repositorio.findById(id);
+            if (productoBuscado.isPresent()){
                 this.repositorio.deleteById(id);
                 return true;
             }else {
-                throw new Exception("Usuario no encontrado");
+                throw new Exception("Producto no encontrado");
             }
         }catch (Exception error){
             throw new Exception(error.getMessage());
