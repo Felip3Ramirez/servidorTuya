@@ -9,28 +9,26 @@ import java.time.LocalDate;
 import java.util.List;
 
 @Entity
-@Table(name = "Entrega")
+@Table(name = "entregas")
 public class Entrega {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_entrega")
     private Integer id;
 
-//    private Integer idPedido;
-//    private Integer idRepartidor;
-
-    @Column()
+    @Column
     private LocalDate fechaEntrega;
-    @Column()
+
+    @Column
     private EntregaEnum estadoEntrega;
 
     @ManyToOne
-    @JoinColumn(name = "fk_repartidor",referencedColumnName = "id_repartidor")
+    @JoinColumn(name = "fk_repartidor", referencedColumnName = "id_repartidor")
     @JsonBackReference
     private Repartidor repartidor;
 
-    @OneToMany(mappedBy = "Entrega")
-    @JoinColumn(name = "fk_pedido",referencedColumnName = "id_pedido")
+    @OneToMany(mappedBy = "entrega")
     @JsonManagedReference
     private List<Pedido> pedidos;
 
@@ -65,5 +63,21 @@ public class Entrega {
 
     public void setEstadoEntrega(EntregaEnum estadoEntrega) {
         this.estadoEntrega = estadoEntrega;
+    }
+
+    public Repartidor getRepartidor() {
+        return repartidor;
+    }
+
+    public void setRepartidor(Repartidor repartidor) {
+        this.repartidor = repartidor;
+    }
+
+    public List<Pedido> getPedidos() {
+        return pedidos;
+    }
+
+    public void setPedidos(List<Pedido> pedidos) {
+        this.pedidos = pedidos;
     }
 }

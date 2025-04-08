@@ -7,31 +7,36 @@ import jakarta.persistence.*;
 import java.util.List;
 
 @Entity
-@Table(name="Usuario")
+@Table(name = "Usuario")
 public class Usuario {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name="id_usuario")
-    private  Integer id;
-    @Column(length = 100,unique = true,nullable = false)
-    private  String nombre;
-    @Column(name="email",length = 150,unique = true,nullable = false)
+    @Column(name = "id_usuario")
+    private Integer id;
+
+    @Column(length = 100, unique = true, nullable = false)
+    private String nombre;
+
+    @Column(name = "email", length = 150, unique = true, nullable = false)
     private String correoElectronico;
-    @Column(length = 250,nullable = false)
+
+    @Column(length = 250, nullable = false)
     private String contraseña;
+
     @Column(length = 20)
     private String telefono;
+
     @Column(nullable = false)
     private UsuarioEnum tipoUsuario;
 
     @OneToMany(mappedBy = "usuario")
     @JsonManagedReference
     private List<Direccion> direcciones;
+
     @OneToMany(mappedBy = "usuario")
     @JsonManagedReference
     private List<Pedido> pedidos;
-
 
     public Usuario() {
     }

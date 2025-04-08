@@ -6,18 +6,23 @@ import jakarta.persistence.*;
 import java.util.List;
 
 @Entity
-@Table (name ="tienda" )
+@Table(name = "Tienda")
 public class Tienda {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_tienda")
     private Integer id;
-    @Column(length = 100,nullable = false)
+
+    @Column(length = 100, nullable = false)
     private String nombre;
-    @Column(length = 250,nullable = false)
+
+    @Column(length = 250, nullable = false)
     private String direccion;
-    @Column(length = 20,nullable = false)
+
+    @Column(length = 20, nullable = false)
     private String telefono;
+
     @Column(length = 50)
     private String categoria;
 

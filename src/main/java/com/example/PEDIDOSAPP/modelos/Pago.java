@@ -11,29 +11,29 @@ import java.util.List;
 @Entity
 @Table(name = "Pago")
 public class Pago {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_pago")
     private Integer id;
 
-//    private Integer idPedido;
-
-    @Column()
+    @Column
     private PagoEnum metodoPago;
-    @Column()
+
+    @Column
     private PagoEstadoEnum estado;
-    @Column()
+
+    @Column
     private LocalDate fechaPago;
 
     @OneToMany(mappedBy = "pago")
-    @JoinColumn(name = "fk_pedido",referencedColumnName = "id_pedido")
     @JsonManagedReference
     private List<Pedido> pedidos;
 
     public Pago() {
     }
 
-    public Pago(Integer id, Integer idPedido, PagoEnum metodoPago, PagoEstadoEnum estado, LocalDate fechaPago) {
+    public Pago(Integer id, PagoEnum metodoPago, PagoEstadoEnum estado, LocalDate fechaPago) {
         this.id = id;
         this.metodoPago = metodoPago;
         this.estado = estado;

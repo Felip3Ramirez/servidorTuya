@@ -1,33 +1,37 @@
 package com.example.PEDIDOSAPP.modelos;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
+
+import java.util.List;
 
 @Entity
 @Table(name = "Producto")
 public class Producto {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id_Producto")
+    @Column(name = "id_producto")
     private Integer id;
 
-//    @Column()
-//    private  Integer idRestaurante;
-    @Column(length = 100,nullable = false)
+    @Column(length = 100, nullable = false)
     private String nombre;
-    @Column(length = 10,nullable = false)
+
+    @Column(length = 10, nullable = false)
     private double precio;
+
     @Column(nullable = false)
     private String descripcion;
 
     @ManyToOne
-    @JoinColumn(name = "fk_tienda",referencedColumnName = "id_tienda")
+    @JoinColumn(name = "fk_tienda", referencedColumnName = "id_tienda")
     @JsonBackReference
     private Tienda tienda;
 
-    @ManyToOne
-    @JsonBackReference
-    private Detalle detalle;
+    @OneToMany(mappedBy = "producto")
+    @JsonManagedReference
+    private List<Detalle> detalles;
 
     public Producto() {
     }
@@ -69,5 +73,21 @@ public class Producto {
 
     public void setDescripcion(String descripcion) {
         this.descripcion = descripcion;
+    }
+
+    public Tienda getTienda() {
+        return tienda;
+    }
+
+    public void setTienda(Tienda tienda) {
+        this.tienda = tienda;
+    }
+
+    public List<Detalle> getDetalles() {
+        return detalles;
+    }
+
+    public void setDetalles(List<Detalle> detalles) {
+        this.detalles = detalles;
     }
 }
