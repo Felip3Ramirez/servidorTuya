@@ -27,7 +27,7 @@ public class Pedido {
 
     @ManyToOne
     @JoinColumn(name = "fk_usuario", referencedColumnName = "id_usuario")
-    @JsonBackReference
+    //@JsonBackReference(value = "pedidoReference")
     private Usuario usuario;
 
     @ManyToOne
@@ -42,7 +42,7 @@ public class Pedido {
 
     @ManyToOne
     @JoinColumn(name = "fk_entrega", referencedColumnName = "id_entrega")
-    @JsonManagedReference
+    @JsonBackReference
     private Entrega entrega;
 
     @OneToMany(mappedBy = "pedido")

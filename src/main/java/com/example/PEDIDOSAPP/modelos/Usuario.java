@@ -31,11 +31,11 @@ public class Usuario {
     private UsuarioEnum tipoUsuario;
 
     @OneToMany(mappedBy = "usuario")
-    @JsonManagedReference
+    @JsonManagedReference(value="direccionReference")
     private List<Direccion> direcciones;
 
     @OneToMany(mappedBy = "usuario")
-    @JsonManagedReference
+    @JsonManagedReference(value = "pedidoReference")
     private List<Pedido> pedidos;
 
     public Usuario() {
