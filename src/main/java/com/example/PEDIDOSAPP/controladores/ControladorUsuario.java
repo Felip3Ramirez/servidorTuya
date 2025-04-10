@@ -4,7 +4,6 @@ import com.example.PEDIDOSAPP.modelos.Usuario;
 import com.example.PEDIDOSAPP.servicios.UsuarioServicio;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.RequestEntity;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
