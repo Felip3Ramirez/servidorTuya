@@ -27,26 +27,26 @@ public class Pedido {
 
     @ManyToOne
     @JoinColumn(name = "fk_usuario", referencedColumnName = "id_usuario")
-    //@JsonBackReference(value = "pedidoReference")
+    @JsonBackReference(value = "usuariopedidos")
     private Usuario usuario;
 
     @ManyToOne
     @JoinColumn(name = "fk_tienda", referencedColumnName = "id_tienda")
-    @JsonBackReference
+    @JsonBackReference(value="tiendapedidos")
     private Tienda tienda;
 
     @ManyToOne
     @JoinColumn(name = "fk_pago", referencedColumnName = "id_pago")
-    @JsonBackReference
+    @JsonBackReference(value="pagopedidos")
     private Pago pago;
 
     @ManyToOne
     @JoinColumn(name = "fk_entrega", referencedColumnName = "id_entrega")
-    @JsonBackReference
+    @JsonBackReference(value="entregapedidos")
     private Entrega entrega;
 
     @OneToMany(mappedBy = "pedido")
-    @JsonManagedReference
+    @JsonManagedReference(value="pedidodetalles")
     private List<Detalle> detalles;
 
     public Pedido() {

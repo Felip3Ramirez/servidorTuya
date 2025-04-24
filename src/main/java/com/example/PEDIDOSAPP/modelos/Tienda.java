@@ -27,11 +27,11 @@ public class Tienda {
     private String categoria;
 
     @OneToMany(mappedBy = "tienda")
-    @JsonManagedReference
+    @JsonManagedReference(value = "tiendapedidos")
     private List<Pedido> pedidos;
 
     @OneToMany(mappedBy = "tienda")
-    @JsonManagedReference
+    @JsonManagedReference(value = "tiendaproductos")
     private List<Producto> productos;
 
     public Tienda() {

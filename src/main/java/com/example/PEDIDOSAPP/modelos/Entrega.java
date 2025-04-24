@@ -25,11 +25,11 @@ public class Entrega {
 
     @ManyToOne
     @JoinColumn(name = "fk_repartidor", referencedColumnName = "id_repartidor")
-    @JsonBackReference
+    @JsonBackReference(value = "repartidorentregas")
     private Repartidor repartidor;
 
     @OneToMany(mappedBy = "entrega")
-    @JsonManagedReference
+    @JsonManagedReference(value = "entregapedidos")
     private List<Pedido> pedidos;
 
     public Entrega() {

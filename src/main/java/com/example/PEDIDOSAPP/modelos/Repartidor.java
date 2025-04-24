@@ -27,7 +27,7 @@ public class Repartidor {
     private String vehiculo;
 
     @OneToMany(mappedBy = "repartidor")
-    @JsonManagedReference
+    @JsonManagedReference(value = "repartidorentregas")
     private List<Entrega> entregas;
 
     public Repartidor() {
