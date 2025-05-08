@@ -1,0 +1,105 @@
+1. Usuario
+
+{
+  "nombre": "Juan Pérez",
+  "correoElectronico": "juan.perez@example.com",
+  "contraseña": "12345678",
+  "telefono": "123456789",
+  "tipoUsuario": "CLIENTE"
+}
+
+2. Tienda
+
+{
+  "nombre": "Tienda La Esquina",
+  "direccion": "Calle Falsa 123",
+  "telefono": "987654321",
+  "categoria": "Comida"
+}
+
+3. Repartidor
+
+{
+  "nombre": "Carlos Ramírez",
+  "telefono": "321654987",
+  "correo": "carlos.ramirez@example.com",
+  "vehiculo": "Motocicleta"
+}
+
+4. Producto
+
+{
+  "nombre": "Hamburguesa Doble",
+  "precio": 5.99,
+  "descripcion": "Hamburguesa con doble carne y queso",
+  "tienda": {
+    "id": 1
+  }
+}
+
+5. Entrega
+
+{
+  "fechaEntrega": "2025-05-08",
+  "estadoEntrega": "EN_CAMINO",
+  "repartidor": {
+    "id": 1
+  }
+}
+
+6. Pago
+
+{
+  "metodoPago": "TARJETA",
+  "estado": "COMPLETADO",
+  "fechaPago": "2025-05-07"
+}
+
+
+7. Pedido
+
+{
+  "estado": "PENDIENTE",
+  "fechaPedido": "2025-05-07",
+  "total": 23.50,
+  "usuario": {
+    "id": 1
+  },
+  "tienda": {
+    "id": 1
+  },
+  "pago": {
+    "id": 1
+  },
+  "entrega": {
+    "id": 1
+  }
+}
+
+
+
+
+8. Dirección
+
+{
+  "calle": "Av. Principal 456",
+  "ciudad": "Bogotá",
+  "codigoPostal": "110111",
+  "pais": "Colombia",
+  "usuario": {
+    "id": 1
+  }
+}
+
+9. Detalle de Pedido
+
+{
+  "cantidad": 2,
+  "subTotal": 11.98,
+  "pedido": {
+    "id": 1
+  },
+  "producto": {
+    "id": 1
+  }
+}
