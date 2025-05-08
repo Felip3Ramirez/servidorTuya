@@ -2,7 +2,7 @@
 
 {
   "nombre": "Juan Pérez",
-  "correoElectronico": "juan.perez@example.com",
+  "correoElectronico": "juan.perez@email.com",
   "contraseña": "12345678",
   "telefono": "123456789",
   "tipoUsuario": "CLIENTE"
